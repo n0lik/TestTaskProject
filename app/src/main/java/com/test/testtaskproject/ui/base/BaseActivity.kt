@@ -1,4 +1,4 @@
-package com.test.testtaskproject.ui
+package com.test.testtaskproject.ui.base
 
 import android.annotation.SuppressLint
 import android.os.Bundle

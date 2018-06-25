@@ -1,4 +1,4 @@
-package com.test.testtaskproject.ui
+package com.test.testtaskproject.ui.base
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
