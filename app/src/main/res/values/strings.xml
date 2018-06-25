@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">TestTaskProject</string>
+
+    <!-- Alerts input validator-->
+    <string name="alert_empty_email">Fill email</string>
+    <string name="alert_incorrect_email">Incorrect email</string>
+
+    <string name="alert_pswrd_lower">Password should contain 4–10 characters</string>
+    <string name="alert_pswrd_empty">Enter password</string>
+    
 </resources>
