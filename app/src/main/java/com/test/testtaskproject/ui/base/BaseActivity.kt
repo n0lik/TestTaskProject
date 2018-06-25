@@ -1,10 +1,12 @@
 package com.test.testtaskproject.ui.base
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.support.annotation.IdRes
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
+import com.test.testtaskproject.ui.worlds.WorldActivity
 
 /**
  * Created by Sergey Shvets on 25/06/2018.
@@ -36,6 +38,8 @@ abstract class BaseActivity: AppCompatActivity(), BaseView {
     }
 
     override fun navigateToMainScreen() {
+        val i = Intent(this, WorldActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        startActivity(i)
     }
 
 }
