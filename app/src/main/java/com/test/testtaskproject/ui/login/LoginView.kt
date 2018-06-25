@@ -8,8 +8,8 @@ import com.test.testtaskproject.ui.base.BaseView
  */
 interface LoginView : BaseView {
 
-    fun showEmailValidError(@IdRes resError: Int)
+    fun showEmailValidError(@IdRes resError: Int?)
 
-    fun showPassValidError(@IdRes resError: Int)
+    fun showPassValidError(@IdRes resError: Int?)
 
 }
