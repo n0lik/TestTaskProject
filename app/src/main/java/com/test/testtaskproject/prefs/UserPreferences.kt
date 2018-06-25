@@ -7,6 +7,10 @@ interface UserPreferences<T> {
 
     fun getUser(): T?
 
-    fun saveUser(model: T): Boolean
+    fun saveUser(model: T)
+
+    fun isLogin(): Boolean
+
+    fun logout()
 
 }
