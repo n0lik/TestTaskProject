@@ -27,4 +27,13 @@ abstract class BaseAdapter<T>: RecyclerView.Adapter<BaseViewHolder<T>>() {
         holder.bind(list[position])
     }
 
+    fun addItems(list: List<T>, clear: Boolean){
+        if(clear) {
+            this.list.clear()
+        }
+        val positionStart = this.list.size
+        this.list.addAll(list)
+        notifyItemRangeInserted(positionStart, list.size)
+    }
+
 }
