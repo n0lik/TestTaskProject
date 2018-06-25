@@ -32,7 +32,8 @@ class LoginActivity: BaseActivity(), LoginView, View.OnClickListener {
 
     override fun onClick(v: View?) {
         when(v!!.id){
-            R.id.email_sign_in_button -> mLoginPresenter?.login(email.text.toString(), password.text.toString())
+            R.id.email_sign_in_button ->
+                mLoginPresenter?.login(email.text.toString(), password.text.toString())
         }
     }
 
@@ -49,4 +50,8 @@ class LoginActivity: BaseActivity(), LoginView, View.OnClickListener {
         resError?.let { password.error = resources.getString(it) }
     }
 
+    override fun onDestroy() {
+        mLoginPresenter?.unbind()
+        super.onDestroy()
+    }
 }
