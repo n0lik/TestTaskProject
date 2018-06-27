@@ -1,11 +1,15 @@
 package com.test.testtaskproject.ui.base
 
+import com.test.testtaskproject.model.user.User
+import com.test.testtaskproject.network.ServerApi
+import com.test.testtaskproject.prefs.UserPreferences
 import io.reactivex.disposables.CompositeDisposable
 
 /**
  * Created by Sergey Shvets on 25/06/2018.
  */
-abstract class BasePresenterImpl<V: BaseView>: BasePresenter<V> {
+abstract class BasePresenterImpl<V: BaseView>
+    constructor(val serverApi: ServerApi, val userPreferences: UserPreferences<User>): BasePresenter<V> {
 
     protected var compositeDisposable: CompositeDisposable? = null
     private var view: V? = null

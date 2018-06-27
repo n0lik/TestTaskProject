@@ -2,13 +2,18 @@ package com.test.testtaskproject.ui.login
 
 import android.os.Handler
 import com.test.testtaskproject.R
+import com.test.testtaskproject.model.user.User
+import com.test.testtaskproject.network.ServerApi
+import com.test.testtaskproject.prefs.UserPreferences
 import com.test.testtaskproject.ui.base.BasePresenterImpl
 import com.test.testtaskproject.utils.InputFieldValidator
+import javax.inject.Inject
 
 /**
  * Created by Sergey Shvets on 25/06/2018.
  */
-class LoginPresenter: BasePresenterImpl<LoginView>(){
+class LoginPresenter @Inject constructor(api: ServerApi, up: UserPreferences<User>):
+        BasePresenterImpl<LoginView>(api, up){
 
     private val testLogin = "android.test@xyrality.com"
     private val testPassword = "password"

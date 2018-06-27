@@ -3,6 +3,8 @@ package com.test.testtaskproject.prefs
 import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
+import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * Created by Sergey Shvets on 25/06/2018.
@@ -10,7 +12,8 @@ import com.google.gson.JsonSyntaxException
 private const val USER_KEY = "USER_KEY"
 private const val NO_USER = "NO_USER"
 
-class UserPreferencesImpl<User>(private val sp: SharedPreferences): UserPreferences<User> {
+@Singleton
+class UserPreferencesImpl<User> @Inject constructor(val sp: SharedPreferences): UserPreferences<User> {
 
     override fun saveUser(model: User) {
         val userToJson = Gson().toJson(model)

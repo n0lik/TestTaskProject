@@ -7,11 +7,12 @@ import android.support.annotation.IdRes
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.test.testtaskproject.ui.worlds.WorldActivity
+import dagger.android.support.DaggerAppCompatActivity
 
 /**
  * Created by Sergey Shvets on 25/06/2018.
  */
-abstract class BaseActivity: AppCompatActivity(), BaseView {
+abstract class BaseActivity: DaggerAppCompatActivity(), BaseView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
