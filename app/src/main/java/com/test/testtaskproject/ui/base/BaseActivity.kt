@@ -4,8 +4,8 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.support.annotation.IdRes
-import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
+import com.test.testtaskproject.ui.login.LoginActivity
 import com.test.testtaskproject.ui.worlds.WorldActivity
 import dagger.android.support.DaggerAppCompatActivity
 
@@ -36,11 +36,15 @@ abstract class BaseActivity: DaggerAppCompatActivity(), BaseView {
     }
 
     override fun navigateToLoginScreen() {
+        val i = Intent(this, LoginActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        startActivity(i)
+        this.finish()
     }
 
     override fun navigateToMainScreen() {
         val i = Intent(this, WorldActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(i)
+        this.finish()
     }
 
 }
