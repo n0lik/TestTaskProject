@@ -18,4 +18,10 @@
     <string name="prompt_password">Password (optional)</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
+
+    <!-- Alerts internet connection -->
+    <string name="exception_message_loading_web_data_error">Can not load data from web. Please check your Internet connection and try again later.</string>
+    <string name="exception_message_not_found_web_data_error">Requested object is not found</string>
+    <string name="exception_message_internet_connection_error">Please check your network connection</string>
+    <string name="exception_message_generic">There was an application error</string>
 </resources>

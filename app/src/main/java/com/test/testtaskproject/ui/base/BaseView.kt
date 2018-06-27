@@ -9,6 +9,8 @@ interface BaseView {
 
     fun showError(t: Throwable)
 
+    fun showError(idRes: Int)
+
     fun showLoading(show: Boolean)
 
     fun navigateToLoginScreen()

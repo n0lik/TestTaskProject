@@ -1,11 +1,10 @@
 package com.test.testtaskproject.ui.worlds
 
-import com.test.testtaskproject.R.id.email
-import com.test.testtaskproject.model.request.UserWorldsRequest
 import com.test.testtaskproject.model.user.User
 import com.test.testtaskproject.network.ServerApi
 import com.test.testtaskproject.prefs.UserPreferences
 import com.test.testtaskproject.ui.base.BasePresenterImpl
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
@@ -26,7 +25,7 @@ class WorldPresenter @Inject constructor(api: ServerApi, up: UserPreferences<Use
             compositeDisposable!!.add(
                     serverApi.getUserWorlds(map)
                             .subscribeOn(Schedulers.io())
-                            .observeOn(Schedulers.computation())
+                            .observeOn(AndroidSchedulers.mainThread())
                             .subscribe({
                                 it.availableWorlds?.let {
                                     getView()?.apply {
