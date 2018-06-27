@@ -18,6 +18,13 @@ class LoginPresenter @Inject constructor(api: ServerApi, up: UserPreferences<Use
     private val testLogin = "android.test@xyrality.com"
     private val testPassword = "password"
 
+    override fun bind(view: LoginView) {
+        super.bind(view)
+        if(userPreferences.isLogin()){
+            getView()?.navigateToMainScreen()
+        }
+    }
+
     fun login(email: String, pass: String){
         getView()?.showLoading(true)
         if(checkEmail(email) && checkPass(pass)) {
@@ -25,6 +32,7 @@ class LoginPresenter @Inject constructor(api: ServerApi, up: UserPreferences<Use
                 Handler().postDelayed({
                     getView()?.apply {
                         showLoading(false)
+                        userPreferences.saveUser(User(email, pass))
                         navigateToMainScreen()
                     }
 
