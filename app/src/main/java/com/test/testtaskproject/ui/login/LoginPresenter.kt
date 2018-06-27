@@ -32,7 +32,7 @@ class LoginPresenter @Inject constructor(api: ServerApi, up: UserPreferences<Use
                 Handler().postDelayed({
                     getView()?.apply {
                         showLoading(false)
-                        userPreferences.saveUser(User(email, pass))
+                        userPreferences.saveUser(User(email, pass, getDeviceType()))
                         navigateToMainScreen()
                     }
 
@@ -51,6 +51,8 @@ class LoginPresenter @Inject constructor(api: ServerApi, up: UserPreferences<Use
             }
         }
     }
+
+    private fun getDeviceType(): String = String.format("%s %s", android.os.Build.MODEL, android.os.Build.VERSION.RELEASE)
 
     private fun checkEmail(email: String): Boolean = InputFieldValidator.checkEmailValid(email) == null
 
