@@ -10,4 +10,6 @@ interface WorldView: BaseView {
 
     fun showWorlds(list: List<WorldModel>, clear: Boolean)
 
+    fun getMac(): String
+
 }

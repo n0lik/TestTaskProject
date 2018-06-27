@@ -8,6 +8,8 @@ import com.test.testtaskproject.R
 import com.test.testtaskproject.model.WorldModel
 import com.test.testtaskproject.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.world_activity.*
+import java.net.NetworkInterface
+import java.util.*
 import javax.inject.Inject
 
 /**
@@ -49,5 +51,29 @@ class WorldActivity : BaseActivity(), WorldView {
     override fun onDestroy() {
         worldPresenter.unbind()
         super.onDestroy()
+    }
+
+    override fun getMac(): String {
+        try {
+            val all = Collections.list(NetworkInterface.getNetworkInterfaces())
+            for (nif in all) {
+                if (!nif.name.equals("wlan0", ignoreCase = true)) continue
+
+                val macBytes = nif.hardwareAddress ?: return ""
+
+                val res1 = StringBuilder()
+                for (b in macBytes) {
+                    res1.append(String.format("%02X:", b))
+                }
+
+                if (res1.isNotEmpty()) {
+                    res1.deleteCharAt(res1.length - 1)
+                }
+                return res1.toString()
+            }
+        } catch (ex: Exception) {
+        }
+
+        return "02:00:00:00:00:00"
     }
 }
