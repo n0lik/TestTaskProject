@@ -11,7 +11,11 @@ import javax.inject.Inject
 /**
  * Created by Sergey Shvets on 25/06/2018.
  */
+
 class LoginActivity: BaseActivity(), LoginView, View.OnClickListener {
+
+    private val LOADING_STATE = "Loading"
+    private var LOAGING: Boolean = false
 
     @Inject
     lateinit var mLoginPresenter: LoginPresenter
@@ -36,8 +40,21 @@ class LoginActivity: BaseActivity(), LoginView, View.OnClickListener {
     }
 
     override fun showLoading(show: Boolean) {
+        LOAGING = show
         login_progress.visibility = if(show) View.VISIBLE else View.GONE
         login_form.visibility =  if(!show) View.VISIBLE else View.GONE
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBoolean(LOADING_STATE, LOAGING)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+        super.onRestoreInstanceState(savedInstanceState)
+        if(savedInstanceState?.getBoolean(LOADING_STATE) == true){
+            mLoginPresenter.login(email.text.toString(), password.text.toString())
+        }
     }
 
     override fun showEmailValidError(resError: Int?) {
@@ -52,4 +69,5 @@ class LoginActivity: BaseActivity(), LoginView, View.OnClickListener {
         mLoginPresenter.unbind()
         super.onDestroy()
     }
+
 }

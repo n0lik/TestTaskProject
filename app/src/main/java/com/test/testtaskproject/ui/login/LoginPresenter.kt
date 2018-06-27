@@ -28,21 +28,20 @@ class LoginPresenter @Inject constructor(api: ServerApi, up: UserPreferences<Use
     fun login(email: String, pass: String){
         getView()?.showLoading(true)
         if(checkEmail(email) && checkPass(pass)) {
-            if (email == testLogin && pass == testPassword) {
-                Handler().postDelayed({
+            Handler().postDelayed({
+                if (email == testLogin && pass == testPassword) {
+                        getView()?.apply {
+                            showLoading(false)
+                            userPreferences.saveUser(User(email, pass, getDeviceType()))
+                            navigateToMainScreen()
+                        }
+                } else {
                     getView()?.apply {
                         showLoading(false)
-                        userPreferences.saveUser(User(email, pass, getDeviceType()))
-                        navigateToMainScreen()
+                        showMsg(R.string.alert_invalid_credential)
                     }
-
-                }, 2000)
-            } else {
-                getView()?.apply {
-                    showLoading(false)
-                    showMsg(R.string.alert_invalid_credential)
                 }
-            }
+                }, 4000)
         } else {
             getView()?.apply {
                 showLoading(false)
