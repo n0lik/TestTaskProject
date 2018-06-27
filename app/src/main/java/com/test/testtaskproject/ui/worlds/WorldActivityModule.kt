@@ -5,7 +5,6 @@ import com.test.testtaskproject.network.ServerApi
 import com.test.testtaskproject.prefs.UserPreferences
 import dagger.Module
 import dagger.Provides
-import dagger.android.ContributesAndroidInjector
 
 /**
  * Created by Sergey Shvets on 25/06/2018.

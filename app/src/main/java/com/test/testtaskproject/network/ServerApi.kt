@@ -2,6 +2,8 @@ package com.test.testtaskproject.network
 
 import com.test.testtaskproject.model.response.UserWorldsResponse
 import io.reactivex.Observable
+import retrofit2.http.FieldMap
+import retrofit2.http.FormUrlEncoded
 import retrofit2.http.Headers
 import retrofit2.http.POST
 
@@ -13,8 +15,9 @@ private const val USER_WORLD_URL = "/XYRALITY/WebObjects/BKLoginServer.woa/wa/wo
 
 interface ServerApi {
 
+    @FormUrlEncoded
     @POST(USER_WORLD_URL)
     @Headers("Accept: application/json")
-    fun getUserWorlds(): Observable<UserWorldsResponse>
+    fun getUserWorlds(@FieldMap map: HashMap<String, String>): Observable<UserWorldsResponse>
 
 }

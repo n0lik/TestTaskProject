@@ -6,6 +6,7 @@ buildscript {
     ext.retrofit_version = '2.4.0'
     ext.dagger2_version = '2.16'
     ext.rxAndroid_version = '2.0.2'
+    ext.loggingInterceptor_version = '3.10.0'
 
     ext.supportLibrary_version = "27.1.1"
 

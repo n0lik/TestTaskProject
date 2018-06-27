@@ -49,6 +49,8 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxkotlin:$rxKotlin_version"
     //RxAndroid
     implementation "io.reactivex.rxjava2:rxandroid:$rxAndroid_version"
+    //Logging-interceptor
+    implementation "com.squareup.okhttp3:logging-interceptor:$loggingInterceptor_version"
     //Dagger2
     implementation "com.google.dagger:dagger:$dagger2_version"
     implementation "com.google.dagger:dagger-android-support:$dagger2_version"

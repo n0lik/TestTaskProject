@@ -5,6 +5,7 @@ import com.test.testtaskproject.network.ServerApi
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -22,15 +23,17 @@ class ApiModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder().build()
+    fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder()
+            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+            .build()
 
     @Provides
     @Singleton
-    fun provideAdapterFactory() = RxJava2CallAdapterFactory.create()
+    fun provideAdapterFactory(): RxJava2CallAdapterFactory = RxJava2CallAdapterFactory.create()
 
     @Provides
     @Singleton
-    fun provideConverterFactory() = GsonConverterFactory.create()
+    fun provideConverterFactory():GsonConverterFactory = GsonConverterFactory.create()
 
     @Provides
     @Singleton

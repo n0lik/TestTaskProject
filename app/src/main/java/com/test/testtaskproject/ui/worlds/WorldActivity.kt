@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import com.test.testtaskproject.R
 import com.test.testtaskproject.model.WorldModel
 import com.test.testtaskproject.ui.base.BaseActivity
@@ -25,7 +26,10 @@ class WorldActivity : BaseActivity(), WorldView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        worldPresenter.bind(this)
+        worldPresenter.apply {
+            bind(this@WorldActivity)
+            getWorlds()
+        }
     }
 
     @SuppressLint("ResourceType")
@@ -33,10 +37,9 @@ class WorldActivity : BaseActivity(), WorldView {
 
     override fun setupUi() {
         val lm = LinearLayoutManager(baseContext)
-        val itemDecor = DividerItemDecoration(baseContext, lm.orientation)
-        worldView.apply {
+        with(worldView){
             layoutManager = lm
-            addItemDecoration(itemDecor)
+            addItemDecoration(DividerItemDecoration(baseContext, lm.orientation))
             adapter = worldAdapter
         }
     }

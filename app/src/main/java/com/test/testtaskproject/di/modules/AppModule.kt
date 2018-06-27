@@ -41,6 +41,6 @@ abstract class AppModule {
         @JvmStatic
         @Provides
         @Singleton
-        fun provideUserPreferences(up: UserPreferencesImpl<User>): UserPreferences<User> = up
+        fun provideUserPreferences(up: UserPreferencesImpl): UserPreferences<User> = up
     }
 }
