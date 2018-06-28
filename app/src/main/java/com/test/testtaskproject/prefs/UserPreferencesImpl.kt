@@ -14,7 +14,7 @@ private const val USER_KEY = "USER_KEY"
 private const val NO_USER = "NO_USER"
 
 @Singleton
-class UserPreferencesImpl @Inject constructor(val sp: SharedPreferences): UserPreferences<User> {
+open class UserPreferencesImpl @Inject constructor(val sp: SharedPreferences): UserPreferences<User> {
 
     override fun saveUser(model: User) {
         val userToJson = Gson().toJson(model)

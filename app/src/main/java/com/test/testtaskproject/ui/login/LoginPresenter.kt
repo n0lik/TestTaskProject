@@ -12,7 +12,7 @@ import javax.inject.Inject
 /**
  * Created by Sergey Shvets on 25/06/2018.
  */
-class LoginPresenter @Inject constructor(api: ServerApi, up: UserPreferences<User>):
+open class LoginPresenter @Inject constructor(api: ServerApi, up: UserPreferences<User>):
         BasePresenterImpl<LoginView>(api, up){
 
     private val testLogin = "android.test@xyrality.com"
