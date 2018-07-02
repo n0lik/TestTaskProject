@@ -24,6 +24,11 @@ abstract class BaseFragment: DaggerFragment(), BaseView {
         retainInstance = true
     }
 
+    override fun onDetach() {
+        baseActivity = null
+        super.onDetach()
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return getLayoutId()?.let {inflater.inflate(it, container, false)}
     }
