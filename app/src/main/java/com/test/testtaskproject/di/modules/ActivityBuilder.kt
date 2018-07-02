@@ -4,6 +4,7 @@ import com.test.testtaskproject.ui.login.LoginActivity
 import com.test.testtaskproject.ui.login.LoginActivityModule
 import com.test.testtaskproject.ui.worlds.WorldActivity
 import com.test.testtaskproject.ui.worlds.WorldActivityModule
+import com.test.testtaskproject.ui.worlds.WorldFragmentProvider
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -16,7 +17,7 @@ abstract class ActivityBuilder{
     @ContributesAndroidInjector(modules = [LoginActivityModule::class])
     abstract fun bindLoginActivity(): LoginActivity
 
-    @ContributesAndroidInjector(modules = [WorldActivityModule::class])
+    @ContributesAndroidInjector(modules = [WorldActivityModule::class, WorldFragmentProvider::class])
     abstract fun bindWorldActivity(): WorldActivity
 
 }
