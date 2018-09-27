@@ -11,7 +11,7 @@ import io.reactivex.disposables.CompositeDisposable
 abstract class BasePresenterImpl<V: BaseView>
     constructor(val serverApi: ServerApi, val userPreferences: UserPreferences<User>): BasePresenter<V> {
 
-    protected var compositeDisposable: CompositeDisposable? = null
+    protected var compositeDisposable: CompositeDisposable = CompositeDisposable()
     private var view: V? = null
 
     override fun bind(view: V) {
@@ -21,11 +21,7 @@ abstract class BasePresenterImpl<V: BaseView>
 
     override fun unbind() {
         this.view = null
-        compositeDisposable?.apply {
-            if (!isDisposed) {
-                this.dispose()
-            }
-        }
+        compositeDisposable.clear()
     }
 
     override fun getView(): V? = view
